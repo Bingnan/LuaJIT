@@ -1,0 +1,63 @@
+README for LuaJIT 2.1.0-beta2
+-----------------------------
+
+LuaJIT is a Just-In-Time (JIT) compiler for the Lua programming language.
+
+Project Homepage: http://luajit.org/
+
+LuaJIT is Copyright (C) 2005-2016 Mike Pall.
+LuaJIT is free software, released under the MIT license.
+See full Copyright Notice in the COPYRIGHT file or in luajit.h.
+
+Documentation for LuaJIT is available in HTML format.
+Please point your favorite browser to:
+
+ doc/luajit.html
+
+LuaJIT 2.1 虽然还是beta版但已经是production ready的了
+---------------
+参考 1.
+> 从实际应用性能表现来看，LuaJIT 2.1 虽然目前还是 beta 版本，但是生产运行稳定性
+> 已经很不错，并且在运行效率上要比 LuaJIT 2.0 好很多（大家可自行爬文了解一下），
+> 所以作为 OpenResty 的默认搭档，已经是 LuaJIT 2.1 很久了。
+
+https://moonbingbing.gitbooks.io/openresty-best-practices/content/lua/build_env.html
+
+参考 2.
+> Well, the v2.1 branch is not "unstable". Mike Pall and I have tried 
+very hard to ensure v2.1 is always production ready. 
+
+> OpenResty uses v2.1 for various practical reasons, mostly for 
+performance. For example, 
+
+> 1. LuaJIT v2.1's JIT compiler is way more powerful and featureful than 
+> 2.0.x's. With the "stable" branch, only a very small portion of our 
+> real-world Lua code can be JIT compiled. 
+
+> 2. LuaJIT v2.1 supports the new table.new() and table.clear() Lua 
+> builtins while the stable branch does not. These two builtins can be 
+> JIT compiled and are important for the performance of table-intensive 
+> Lua apps. 
+
+> 3. My employer has been sponsoring Mike Pall to do new optimizations 
+> in LuaJIT according to OpenResty's requirements (and further 
+> prioritized by CloudFlare's business requirements). The sponsored 
+> items are mostly in 1) and 2) above. And new development can only 
+> happen in the v2.1 branch because the 2.0.x branch has been feature 
+> frozen for long. 
+
+> 4. We always run the latest LuaJIT v2.1 in production across 
+> CloudFlare's global network. We've been working closely with Mike Pall 
+> in the past year and successfully nailed down quite some (a dozen?) 
+> very deep and very obscure bugs LuaJIT's JIT compiler that had been 
+> hidden for years even in the stable branch (with the immense help of 
+> our opensource gdb tools [1]). And Mike Pall keeps backporting these 
+> fixes to the stable branch. So you can see that v2.1 is actually 
+> pushing the stable branch to become more "stable". 
+
+> 5. Our latest advanced (online and offline) debugging tools [1] based 
+> on gdb and systemtap are always based on the latest LuaJIT v2.1 code 
+> base. Because these tools have to know the LuaJIT internals, and it's 
+> always a burden to maintain older LuaJIT versions. 
+
+https://groups.google.com/forum/#!topic/openresty-en/M2cpxWiP8Xk
